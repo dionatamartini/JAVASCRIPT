@@ -1,5 +1,5 @@
-m = parseFloat(prompt("Digite um valor em metros"))
-transf = prompt("Para qual unidade de medida deseja fazer a conversão?\nOpção 1: mm\nOpção 2: cm\nOpção 3: dm\nOpção 4: dam\nOpção 5: hm\nOpção 6: km\n\nATENÇÃO: DIGITE APENAS O NÚMERO DA OPÇÃO!")
+const m = parseFloat(prompt("Digite um valor em metros"))
+const transf = prompt("Para qual unidade de medida deseja fazer a conversão?\nOpção 1: mm\nOpção 2: cm\nOpção 3: dm\nOpção 4: dam\nOpção 5: hm\nOpção 6: km\n\nATENÇÃO: DIGITE APENAS O NÚMERO DA OPÇÃO!")
 
 switch(transf) {
     case "1":
