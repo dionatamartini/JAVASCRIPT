@@ -127,30 +127,4 @@ function executar() {
 executar()
 
 
-vagas = [
-    novaVaga: {    
-        "Nome: " : "nome da vaga",
-        "Descrição ": "descrição da vaga",
-        "Data Limite ": "data",
-        "Quantidade de candidados ": "",
-        "Candidatos ": []
-    }
-    novaVaga: [{    
-        "Nome: " : "nome da vaga",
-        "Descrição ": "descrição da vaga",
-        "Data Limite ": "data",
-        "Quantidade de candidados ": "",
-        "Candidatos ": []
-    }
-    ]   
-                   
-
-
-        Vaga nº " + indice +
-        "\nNome: " + vaga.nome +
-        "\nDescrição: " + vaga.descricao +
-        "\nData limite: " + vaga.dataLimite +
-        "\nQuantidade de candidatos: " + vaga.candidatos.length +
-        "\nCandidatos inscritos:" + candidatosEmTexto
-      )
-    }
+                
