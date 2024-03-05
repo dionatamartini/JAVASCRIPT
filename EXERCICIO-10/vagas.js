@@ -1,4 +1,4 @@
-const vagas = [];
+const vagas = []
 
 function listarVagas() {
     const vagasEmTexto = vagas.reduce((textoFinal, vaga, indice) => {
