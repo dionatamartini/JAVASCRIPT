@@ -1,41 +1,40 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('container');
-    const arrowIcon = document.getElementById('icone');
-    const position = document.getElementById('position');
+let listaVisivel = false;   
 
-    function rotateIcon() {
-        arrowIcon.classList.toggle('rotated');
-       
-        const newUl = document.createElement('ul');
-        newUl.className = 'escalar-player';
+function escalarJogador() {
+    const escalar = document.getElementById('escalar');
 
-        const labels = ['Informe a posição: ', 'Informe o nome: ', 'Informe o número: ']; // Exemplo de rótulos diferentes
+    if (!listaVisivel) {
+        const li = ['Informe a posição: ', 'Informe o nome: ', 'Informe o número da camisa: '];
+        const ul = document.createElement('ul');
+        ul.className = 'ul-list';
 
-        labels.forEach(function(labelText) {
+        li.forEach(liText => {
             const newLi = document.createElement('li');
-            newLi.className = 'list-item';
-
             const label = document.createElement('label');
-            label.setAttribute('for', 'text');
-            label.textContent = labelText;
+            label.textContent = liText;
 
-            const newInput = document.createElement('input');
-            newInput.type = 'text';
-            newInput.name = 'text';
+            const input = document.createElement('input');
+            input.type = 'text';
+
+            // Adiciona um quebra de linha para separar os elementos
+            newLi.appendChild(document.createElement('br'));
 
             newLi.appendChild(label);
-            newLi.appendChild(newInput);
-            newUl.appendChild(newLi);
+            newLi.appendChild(input);
+
+            ul.appendChild(newLi);
+
+            label.addEventListener('click', function() {
+                input.focus();
+            });
         });
 
-        function confirme() { // Agora está no escopo de rotateIcon
-            console.log('isso funcione ChatGPT?');
-        }
+        escalar.appendChild(ul);
 
-        confirme(); // Chamando a função confirme dentro de rotateIcon
-
-        position.appendChild(newUl);
+        listaVisivel = true; // Atualiza o estado da lista para visível
+    } else {
+        const ul = document.querySelector('.ul-list');
+        escalar.removeChild(ul); // Remove a lista
+        listaVisivel = false; // Atualiza o estado da lista para invisível
     }
-
-    container.addEventListener('click', rotateIcon); 
-});
+}

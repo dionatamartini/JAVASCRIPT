@@ -3,7 +3,6 @@
     margin: 0;
 }
 
-
 h1 {
     text-align: center;
     margin: 1em;
@@ -12,27 +11,15 @@ h1 {
     
 }
 
-
 main {
     margin-left: 1em;
 }
-
-h2 {
-    cursor: pointer;
-}
-
-.material-symbols-outlined {
-    vertical-align: middle;
-    cursor: pointer;
-}
-
-.rotated {
-    transform: rotate(90deg);
-    transition: transform 0.3s ease;
-  }
-
 
   li {
     list-style-type: none;
     margin: 5px;
 }
+
+label {
+    cursor: pointer;
+}   
