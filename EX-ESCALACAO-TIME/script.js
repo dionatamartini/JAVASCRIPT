@@ -1,4 +1,5 @@
-let listaVisivel = false;   
+let listaVisivel = false;  
+const player = [] 
 
 
 function escalarJogador() {
@@ -41,8 +42,16 @@ function escalarJogador() {
         escalar.appendChild(buttonYes);
 
         buttonYes.addEventListener('click', function() {
-            // código a ser executado quando o botão for clicado
+            const inputs = escalar.querySelectorAll('.ul-list li input'); // Seleciona todos os inputs dentro da lista criada
+            inputs.forEach(input => {
+                const labelText = input.previousElementSibling.textContent; // Obtém o texto do label correspondente
+                const inputValue = input.value; // Obtém o valor do input
+                player[labelText] = inputValue; // Adiciona o valor do input ao objeto player, usando o texto do label como chave
+            });
+            console.log(player);
         });
+
+
 
         listaVisivel = true; // Atualiza o estado da lista para visível
     } else {
