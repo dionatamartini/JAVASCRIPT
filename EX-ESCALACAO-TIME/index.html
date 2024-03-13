@@ -4,17 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Escalação</title>
+    <title>Escalação do time</title>
 </head>
 <body>
-    <h1>Escale seu time</h1>
-    
-    <main>
-        <section id="escalar">
-            <button onclick="escalarJogador()">ESCALAR JOGADOR</button> 
+    <h1>Escalação do time</h1>
+    <hr>
+    <h2>Escalar Jogador</h2>
+    <p>
+        <label for="posicao">Posição:</label>
+        <input type="text" name="position" id="position">
 
-        </section>
-    </main>
+        <label for="name">Nome:</label>
+        <input type="text" name="name" id="name">
+
+        <label for="number">Número:</label>
+        <input type="text" name="number" id="number">
+        <button onclick="addPlayer()">Escalar</button>
+    </p>
+    <h2>Remover Jogador</h2>
+    <p>
+        <label for="numberToRemove">Número:</label>
+        <input type="text" name="numberToRemove" id="numberToRemove">
+        <button onclick="removePlayer()">Remover</button>
+    </p>
+    <h2>Time</h2>
+    <ul id="teamList"></ul>
 </body>
 </html>
