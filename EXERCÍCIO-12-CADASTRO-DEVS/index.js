@@ -1,66 +1,106 @@
-const inicio = document.getElementById('inicio');
-const button = document.getElementById('button');
-let contador = 1;
+const inicio = document.getElementById('inicio')
+const comand = document.getElementById('button')
 
-button.addEventListener('click', function(ev) {
+comand.addEventListener('click', function (ev) {
+    ev.preventDefault()
+    const yourname = document.querySelector("input[name='name']").value
+    if (yourname) {
+        
+        const setorOne = document.createElement('div')
+        setorOne.id = 'div01'
+    
+        const labelTech = document.createElement('label')
+        labelTech.setAttribute('for', 'tech')
+        labelTech.innerText = 'Informe a tecnologia:'
+        
+        const inputTech = document.createElement('input');
+        inputTech.type = 'text'
+        inputTech.name = 'tech'
+        inputTech.id = 'tech' // Este ID deve ser único
+        
+        inicio.appendChild(setorOne)
+        setorOne.appendChild(labelTech)
+        setorOne.appendChild(inputTech)
+        //-----------------------------------------------------------------------------------------------------------------------------
 
-    for(i = 0; i < 2; i++) {
-        const lineBreak = document.createElement('br')
-        inicio.appendChild(lineBreak)
+        const setorTwo = document.createElement('div')
+        setorTwo.id = 'div02'
+
+        const inputRadio02 = document.createElement('input')
+        inputRadio02.type = 'radio'
+        inputRadio02.name = 'grupo02'
+        inputRadio02.id = 'radio2anos'
+
+        const labelRadio02 = document.createElement('label')
+        labelRadio02.setAttribute('for' , 'radio-2anos')
+        labelRadio02.innerText = '0 a 2 anos'
+
+        inputRadio02.addEventListener('change', function () {
+            if (this.checked) {
+                if (radio2anos) {
+                    document.getElementById(radio2anos).checked = false;
+                }
+                radio2anos = this.id;
+            }
+        });
+
+        inicio.appendChild(setorTwo)
+        setorTwo.appendChild(inputRadio02)
+        setorTwo.appendChild(labelRadio02)
+
+        //--------------------------------------------------------------------------------------------------
+
+        const setorthree = document.createElement('div')
+        setorthree.id = 'div03'
+
+        const inputRadio03 = document.createElement('input')
+        inputRadio03.type = 'radio'
+        inputRadio03.name = 'grupo03'
+        inputRadio03.id = 'radio3anos'
+        const labelRadio03 = document.createElement('label')
+        labelRadio03.setAttribute('for' , 'radio-3anos')
+        labelRadio03.innerText = '3 a 5 anos'
+
+        inputRadio03.addEventListener('change', function () {
+            if (this.checked) {
+                if (radio3anos) {
+                    document.getElementById(radio3anos).checked = false;
+                }
+                radio3anos = this.id;
+            }
+        });
+
+        inicio.appendChild(setorthree)
+        setorthree.appendChild(inputRadio03)
+        setorthree.appendChild(labelRadio03)
+
+        //--------------------------------------------------------------------------------------------------------
+
+        const setorFour = document.createElement('div')
+        setorFour.id = 'div04'
+
+        const inputRadio04 = document.createElement('input')
+        inputRadio04.type = 'radio'
+        inputRadio04.name = 'grupo04'
+        inputRadio04.id = 'radio4anos'
+        const labelRadio04 = document.createElement('label')
+        labelRadio04.setAttribute('for' , 'radio-4anos')
+        labelRadio04.innerText = 'Mais de 5 anos'
+
+        inputRadio04.addEventListener('change', function () {
+            if (this.checked) {
+                if (radio4anos) {
+                    document.getElementById(radio4anos).checked = false;
+                }
+                radio4anos = this.id;
+            }
+        });
+
+        inicio.appendChild(setorFour)
+        setorFour.appendChild(inputRadio04)
+        setorFour.appendChild(labelRadio04)
+
+    } else {
+        alert('ATENÇÃO! Antes de informar a tecnologia, deve preencher seu nome!')
     }
-    const newLabel = document.createElement('label');
-    newLabel.setAttribute('for', 'tecnologia' + contador);
-    newLabel.innerText = 'Informe a tecnologia: ';
-
-    const newInput = document.createElement('input');
-    newInput.type = 'text';
-    newInput.id = 'textTecnologia' + contador;
-    newInput.name = 'textTecnologia' + contador;
-
-    const inputRadio2anos = document.createElement('input');
-    inputRadio2anos.type = 'radio';
-    inputRadio2anos.id = '2anos' + contador;
-    inputRadio2anos.name = '2anos' + contador;
-    inputRadio2anos.value = '2anos' + contador;
-
-    const labelRadio2anos = document.createElement('label');
-    labelRadio2anos.setAttribute('for', 'radio2anos' + contador);
-    labelRadio2anos.innerText = '0 a 2 anos';
-
-    const inputRadio3a4anos = document.createElement('input');
-    inputRadio3a4anos.type = 'radio';
-    inputRadio3a4anos.id = '3a4anos' + contador;
-    inputRadio3a4anos.name = '3a4anos' + contador;
-    inputRadio3a4anos.value = '3a4anos' + contador;
-
-    const labelRadio3a4anos = document.createElement('label');
-    labelRadio3a4anos.setAttribute('for', 'radio3a4anos' + contador);
-    labelRadio3a4anos.innerText = '3 a 4 anos';
-
-    const inputRadio5anos = document.createElement('input');
-    inputRadio5anos.type = 'radio';
-    inputRadio5anos.id = '+5anos' + contador;
-    inputRadio5anos.name = '+5anos' + contador;
-    inputRadio5anos.value = '+5anos' + contador;
-
-    const labelRadio5anos = document.createElement('label');
-    labelRadio5anos.setAttribute('for', 'radio+5anos' + contador);
-    labelRadio5anos.innerText = '+5 de anos';
-
-    inicio.appendChild(newLabel);
-    inicio.appendChild(newInput);
-
-    for (let i = 0; i < 2; i++) {
-        const lineBreak = document.createElement('br');
-        inicio.appendChild(lineBreak);
-    }
-
-    inicio.appendChild(inputRadio2anos);
-    inicio.appendChild(labelRadio2anos);
-    inicio.appendChild(inputRadio3a4anos);
-    inicio.appendChild(labelRadio3a4anos);
-    inicio.appendChild(inputRadio5anos);
-    inicio.appendChild(labelRadio5anos);
-
-    contador++;
 });
