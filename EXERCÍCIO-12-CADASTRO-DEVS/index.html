@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
     <title>Cadastro de Devs</title>
 </head>
 <body>
     <h1>Cadastro de Devs</h1>
 
-    <section id="inicio">
-        <label for="name" id="name">Digite seu nome completo:</label>
-        <input type="text" name="name" id="name">
-        <button id="button">Adicionar Tecnologia</button>
+    <h2>Cadastrar novo Desenvolvedor</h2>
+    <form id="formulario">
+        <label for="nomeCompleto" id="name">Digite seu nome completo:</label>
+        <input type="text" name="nomeCompleto" id="nomeCompleto"><br><br>
+
+
+        <button type="button" id="addBotao">Adicionar Tecnologia</button>
+        <ul id="listaNaoOrdenada"></ul>
         <br>
+        <button type="submit">Cadastrar</button>
         
-    </section> 
+    </form> 
     
 
 

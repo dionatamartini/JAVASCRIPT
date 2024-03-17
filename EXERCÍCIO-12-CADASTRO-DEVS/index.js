@@ -1,106 +1,92 @@
-const inicio = document.getElementById('inicio')
-const comand = document.getElementById('button')
+function createLabel(text, htmlFor) {
+    const label = document.createElement('label')
+    label.htmlFor = htmlFor
+    label.innerText = text
+    return label
+}
 
-comand.addEventListener('click', function (ev) {
-    ev.preventDefault()
-    const yourname = document.querySelector("input[name='name']").value
-    if (yourname) {
-        
-        const setorOne = document.createElement('div')
-        setorOne.id = 'div01'
+function createInput(id, value , name , type = 'text', placeholder = '') {
+    const input = document.createElement('input')
+    input.id = id
+    input.value = value
+    input.name = name
+    input.type = type
+    input.placeholder = placeholder
+    return input
+}
+
+const addBotao = document.getElementById('addBotao')
+const formulario = document.getElementById('formulario')
+const desenvolvedores = []
+let inputLinhas = 0
+
+addBotao.addEventListener('click' , function (ev) {
+    const listaNaoOrdenada = document.getElementById('listaNaoOrdenada')
+
+    const novaLinha = document.createElement('li')
+    const numeroLinha = inputLinhas++
+    novaLinha.id = 'inputLinha-' + numeroLinha
+    novaLinha.className = 'inputLinha'
+
+    const techNomeLabel = createLabel('Nome: ', 'techNome- ' + numeroLinha)
+    const techNomeInput = createInput('techNome -' + numeroLinha, null, 'techNome')
+
+    //------------------------------------------------------------------------------------------------- PRIMEIRA PARTE DO CÓDIGO - ANTES DO CLIQUE DO BOTAO OCORRER
+
+    const expLabel = createLabel('Experiência: ')
+    const id1 = 'expRadio-' + numeroLinha + '.1' //1.1
+    const expRadio1 = createInput(id1 , '0-2 anos' , 'techExp-' + numeroLinha, 'radio')
+    const expLabel1 = createLabel('0-2 anos', id1)
+
+    const id2 = 'expRadio-' + numeroLinha + '.2'//1.2
+    const expRadio2 = createInput(id2 , '3-4 anos' , 'techExp-' + numeroLinha, 'radio')
+    const expLabel2 = createLabel('3-4 anos', id2)
+
+    const id3 = 'expRadio-' + numeroLinha + '.3'//1.3
+    const expRadio3 = createInput(id3 , '+5 anos' , 'techExp-' + numeroLinha, 'radio')
+    const expLabel3 = createLabel('+5 anos', id3)
     
-        const labelTech = document.createElement('label')
-        labelTech.setAttribute('for', 'tech')
-        labelTech.innerText = 'Informe a tecnologia:'
-        
-        const inputTech = document.createElement('input');
-        inputTech.type = 'text'
-        inputTech.name = 'tech'
-        inputTech.id = 'tech' // Este ID deve ser único
-        
-        inicio.appendChild(setorOne)
-        setorOne.appendChild(labelTech)
-        setorOne.appendChild(inputTech)
-        //-----------------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------- COMPORTAMENTO DOS RADIOS
 
-        const setorTwo = document.createElement('div')
-        setorTwo.id = 'div02'
+    const removeLinha = document.createElement('button')
+    removeLinha.type = 'button'
+    removeLinha.innerText = 'Remover'
+    removeLinha.addEventListener('click' , function () {
+        listaNaoOrdenada.removeChild(novaLinha)
+    })
 
-        const inputRadio02 = document.createElement('input')
-        inputRadio02.type = 'radio'
-        inputRadio02.name = 'grupo02'
-        inputRadio02.id = 'radio2anos'
 
-        const labelRadio02 = document.createElement('label')
-        labelRadio02.setAttribute('for' , 'radio-2anos')
-        labelRadio02.innerText = '0 a 2 anos'
+    novaLinha.append(
+        techNomeLabel , techNomeInput, expLabel, expRadio1, expLabel1, expRadio2, expLabel2, expRadio3, expLabel3, removeLinha
+    )
 
-        inputRadio02.addEventListener('change', function () {
-            if (this.checked) {
-                if (radio2anos) {
-                    document.getElementById(radio2anos).checked = false;
-                }
-                radio2anos = this.id;
-            }
-        });
+    listaNaoOrdenada.appendChild(novaLinha)
+})
 
-        inicio.appendChild(setorTwo)
-        setorTwo.appendChild(inputRadio02)
-        setorTwo.appendChild(labelRadio02)
+    //------------------------------------------------------------------------------------------------- 
 
-        //--------------------------------------------------------------------------------------------------
-
-        const setorthree = document.createElement('div')
-        setorthree.id = 'div03'
-
-        const inputRadio03 = document.createElement('input')
-        inputRadio03.type = 'radio'
-        inputRadio03.name = 'grupo03'
-        inputRadio03.id = 'radio3anos'
-        const labelRadio03 = document.createElement('label')
-        labelRadio03.setAttribute('for' , 'radio-3anos')
-        labelRadio03.innerText = '3 a 5 anos'
-
-        inputRadio03.addEventListener('change', function () {
-            if (this.checked) {
-                if (radio3anos) {
-                    document.getElementById(radio3anos).checked = false;
-                }
-                radio3anos = this.id;
-            }
-        });
-
-        inicio.appendChild(setorthree)
-        setorthree.appendChild(inputRadio03)
-        setorthree.appendChild(labelRadio03)
-
-        //--------------------------------------------------------------------------------------------------------
-
-        const setorFour = document.createElement('div')
-        setorFour.id = 'div04'
-
-        const inputRadio04 = document.createElement('input')
-        inputRadio04.type = 'radio'
-        inputRadio04.name = 'grupo04'
-        inputRadio04.id = 'radio4anos'
-        const labelRadio04 = document.createElement('label')
-        labelRadio04.setAttribute('for' , 'radio-4anos')
-        labelRadio04.innerText = 'Mais de 5 anos'
-
-        inputRadio04.addEventListener('change', function () {
-            if (this.checked) {
-                if (radio4anos) {
-                    document.getElementById(radio4anos).checked = false;
-                }
-                radio4anos = this.id;
-            }
-        });
-
-        inicio.appendChild(setorFour)
-        setorFour.appendChild(inputRadio04)
-        setorFour.appendChild(labelRadio04)
-
-    } else {
-        alert('ATENÇÃO! Antes de informar a tecnologia, deve preencher seu nome!')
-    }
-});
+form.addEventListener('submit', function (ev) {
+    ev.preventDefault()
+  
+    const nomeCompleto = document.getElementById('nomeCompleto')
+    const inputLinhas = document.querySelectorAll('.inputLinha')
+  
+    let tecnologias = []
+    inputLinhas.forEach(function (Linha) {
+      // #expRadio- input[name="techNome"]
+      const techNome = document.querySelector('#' + Linha.id + ' input[name="techNome"]').value
+      const techExp = document.querySelector('#' + Linha.id + ' input[type="radio"]:checked').value
+      tecnologias.push({ name: techNome, exp: techExp })
+    })
+  
+    const novoDev = { nomeCompleto: nomeCompleto.value, tecnologias: tecnologias }
+    developers.push(novoDev)
+    alert('Dev cadastrado com sucesso!')
+  
+    nomeCompleto.value = ''
+    inputLinhas.forEach(function (Linha) {
+      Linha.remove()
+    })
+  
+    console.log(developers)
+  })
