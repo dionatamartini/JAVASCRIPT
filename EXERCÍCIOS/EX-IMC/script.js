@@ -6,7 +6,7 @@ const resultElement = document.getElementById('res');
 
 calculateButton.addEventListener('click', function(ev) {
   ev.preventDefault(); // Evita o comportamento padrão de envio do formulário
-
+    
   try {
     const height = parseFloat(heightInput.value);
     const weight = parseFloat(weightInput.value);
