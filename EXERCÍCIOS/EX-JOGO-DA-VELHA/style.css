@@ -1,0 +1,27 @@
+.loginPlayers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 30vw;
+    height: 30vw;
+    border: 2px solid black;
+    border-radius: 2px;
+    box-shadow: 2px 2px 75px;
+    background-color: aquamarine;
+    z-index: 10000;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+h2 {
+    text-align: center;
+    font-size: 1.4em;
+    display: inline-block;
+    overflow:auto;
+}
+
+label , input {
+    display: block;
+}
