@@ -1,17 +1,28 @@
-class Component {
-    #element
-    constructor(comp){
-        this.#element = comp
+export class Component {
+    #element = null
+  
+    constructor(tag, parent, options) {
+      this.tag = tag
+      this.parent = parent
+      this.options = options
+      this.build()
     }
-    
-    readComp() {
-        const element = document.createElement('div');
-        element.textContent = 'Componente Genérico';
-        return element;
+  
+    getElement() {
+      return this.#element
     }
-}
-
-console.log(readComp())
-
-
-
+  
+    build() {
+      this.#element = document.createElement(this.tag)
+      Object.assign(this.#element, this.options)
+      return this
+    }
+  
+    render() {
+      if (this.parent instanceof Component) {
+        this.parent.getElement().append(this.#element)
+      } else {
+        document.querySelector(this.parent).append(this.#element)
+      }
+    }
+  }
