@@ -5,7 +5,7 @@ module.exports = class Loan {
         this.portion = portion * Loan.baseFee
     }
 
-    static baseFee = 150
+    static baseFee = 0.2
 
     get readyStatic() {
         
