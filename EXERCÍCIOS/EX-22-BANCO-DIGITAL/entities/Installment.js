@@ -1,7 +1,7 @@
 module.exports = class Installment {
     constructor(value, numberportion, situation){
         this.value = value
-        this.numberportion = numberportion
+        this.numberportion = new 
         this.situation = situation
     }
 

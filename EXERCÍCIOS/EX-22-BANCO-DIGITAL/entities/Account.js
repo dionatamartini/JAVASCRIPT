@@ -18,4 +18,6 @@ module.exports = class Account {
             value += this.balance
         })
     }
+
+    
 }
