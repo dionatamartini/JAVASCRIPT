@@ -1,5 +1,13 @@
 module.exports = class User {
-    constructor (){
-        
+    #password
+    constructor (name, email, password){
+        this.name = name
+        this.email = email
+        this.#password = password
     }
+    
+    get showUser() {
+        return this.name
+    }
+
 }

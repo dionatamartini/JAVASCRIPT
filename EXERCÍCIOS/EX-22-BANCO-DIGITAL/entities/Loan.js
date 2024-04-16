@@ -1,13 +1,14 @@
 module.exports = class Loan {
-    constructor(value , date , portion) {
+    #date = new Date()
+    constructor(value , portion = 0) {
         this.value = value
-        this.date = date
-        this.portion = portion * Loan.baseFee
+        this.date = new Date()
+        this.portion = portion * Loan.#baseFee
     }
 
-    static baseFee = 0.2
+    static #baseFee = 0.5
 
     get readyStatic() {
-        
+        return this.baseFee
     }
 }
