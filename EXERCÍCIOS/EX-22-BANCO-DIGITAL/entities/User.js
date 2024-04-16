@@ -1,13 +1,10 @@
+const Account = require("./Account")
+
 module.exports = class User {
-    #password
-    constructor (name, email, password){
+    constructor (name, email){
         this.name = name
         this.email = email
-        this.#password = password
+        this.account = new Account(this)
     }
     
-    get showUser() {
-        return this.name
-    }
-
 }

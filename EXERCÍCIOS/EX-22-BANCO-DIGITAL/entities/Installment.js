@@ -1,10 +1,9 @@
 module.exports = class Installment {
-    constructor(value, numberportion, situation){
+    constructor(value, numberportion){
         this.value = value
         this.numberportion = numberportion 
-        this.situation = situation
+        this.status = "pending"
     }
 
 }
 
-const portion = new Installment(20 , 2 , "paga")

@@ -1,23 +1,35 @@
 module.exports = class Account {
     #balance
-    constructor(balance , deposit , loan , transfers , user ) {
-        this.#balance = balance
-        this.deposit = new deposit()
-        this.loan = new loan()
-        this.transfers = new transfers()
-        this.user = user
+
+    constructor(user) {
+        this.owner = user
+        this.#balance = 0
+        this.deposits = []
+        this.loan = []
+        this.transfers = []
     }
 
-    newDeposit(deposit) {
-        const currBalance = deposit + this.#balance
-
+    get balance() {
+        return this.#balance
     }
 
-    newLoan(loan) {
-        const currLoan = loan.forEach(value => {
-            value += this.balance
-        })
+    addDeposit(deposit) {
+        this.#balance += deposit.value
+        this.deposits.push(deposit)
     }
 
+    addLoan(loan) {
+        this.#balance =+ loan.value
+        this.loans.push(loan)
+      }
     
-}
+      addTransfer(transfer) {
+        if (transfer.userReceived.email === this.owner.email) {
+          this.#balance += transfer.value
+          this.transfers.push(transfer)
+        } else if (transfer.userSent.email === this.owner.email) {
+          this.#balance -= transfer.value
+          this.transfers.push(transfer)
+        }
+      }
+    }

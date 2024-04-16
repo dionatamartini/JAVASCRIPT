@@ -1,14 +1,22 @@
+const Installment = require("./Installment")
+
 module.exports = class Loan {
-    #date = new Date()
-    constructor(value , portion = 0) {
+    constructor(value , installments) {
         this.value = value
-        this.date = new Date()
-        this.portion = portion * Loan.#baseFee
+        this.createAt = new Date()
+        this.installments = []
+        for (let i = 1; i <= installments; i++) {
+            this.installments.push(new Installment((value * Loan.#fee) / installments) , i)
+        }
     }
 
-    static #baseFee = 0.5
+    static #fee = 1.05
 
-    get readyStatic() {
-        return this.baseFee
+    static set fee(newFeePercentage) {
+        Loan.#fee = 1 + (newFeePercentage / 100)
+    }
+
+    get fee() {
+        return Loan.#fee
     }
 }
